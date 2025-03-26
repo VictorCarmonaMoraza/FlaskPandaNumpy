@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_swagger_ui import get_swaggerui_blueprint
 from Funciones.funciones import funciones_bp  # Importa el Blueprint
 
@@ -15,7 +15,13 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 )
 
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
-app.register_blueprint(funciones_bp)  # Registra el Blueprint
+app.register_blueprint(funciones_bp)  # Registra el Blueprint con prefijo /funciones
+
+# Ruta de inicio (raíz) que redirige a Swagger UI
+@app.route('/')
+def index():
+    return redirect(url_for('swagger_ui.show'))  # Corrección: usa 'swagger_ui.show'
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    ## app.run(debug=True, port=5001)
+    app.run(debug=True)

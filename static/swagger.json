@@ -5,27 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/": {
-      "get": {
-        "summary": "Obtiene un mensaje de saludo",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "Respuesta exitosa",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "mensaje": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/cargar_csv": {
       "post": {
         "summary": "Carga un archivo CSV",
